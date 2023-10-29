@@ -2,55 +2,25 @@
 <!-- Generated with glade 3.38.2 -->
 <interface>
   <requires lib="gtk+" version="3.24"/>
-  <object class="GtkWindow">
+  <object class="GtkStack">
+    <property name="visible">True</property>
     <property name="can-focus">False</property>
     <child>
-      <object class="GtkBox">
-        <property name="width-request">800</property>
-        <property name="height-request">400</property>
-        <property name="visible">True</property>
-        <property name="can-focus">False</property>
-        <property name="orientation">vertical</property>
-        <property name="baseline-position">top</property>
-        <child>
-          <object class="GtkTextView">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-          </object>
-          <packing>
-            <property name="expand">True</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButton">
-            <property name="label" translatable="yes">button</property>
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="receives-default">True</property>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-      </object>
+      <placeholder/>
     </child>
   </object>
   <object class="GtkWindow" id="insert_popup">
     <property name="can-focus">False</property>
     <child>
       <!-- n-columns=2 n-rows=8 -->
-      <object class="GtkGrid">
+      <object class="GtkGrid" id="grid_insert">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <child>
-          <object class="GtkLabel" id="label1">
+          <object class="GtkLabel" id="label01">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="label" translatable="yes">Please </property>
+            <property name="label" translatable="yes">Please introduce</property>
           </object>
           <packing>
             <property name="left-attach">0</property>
@@ -58,7 +28,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label2">
+          <object class="GtkLabel" id="label1">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="label" translatable="yes">Year of transaction:</property>
@@ -69,7 +39,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label3">
+          <object class="GtkLabel" id="label2">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="label" translatable="yes">Month of transaction:</property>
@@ -80,10 +50,10 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label4">
+          <object class="GtkLabel" id="label3">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="label" translatable="yes">Day of transaction</property>
+            <property name="label" translatable="yes">Day of transaction:</property>
           </object>
           <packing>
             <property name="left-attach">0</property>
@@ -91,7 +61,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label5">
+          <object class="GtkLabel" id="label4">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="label" translatable="yes">Description of the transaction:</property>
@@ -102,7 +72,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label6">
+          <object class="GtkLabel" id="label5">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="label" translatable="yes">Amount:</property>
@@ -113,7 +83,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry">
+          <object class="GtkEntry" id="entry1">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
           </object>
@@ -123,7 +93,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry">
+          <object class="GtkEntry" id="entry2">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
           </object>
@@ -133,7 +103,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry">
+          <object class="GtkEntry" id="entry3">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
           </object>
@@ -143,7 +113,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry">
+          <object class="GtkEntry" id="entry4">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
           </object>
@@ -153,7 +123,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry">
+          <object class="GtkEntry" id="entry5">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
           </object>
@@ -163,8 +133,8 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton">
-            <property name="label" translatable="yes">exit</property>
+          <object class="GtkButton" id="insert_exit_button">
+            <property name="label" translatable="yes">Exit</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
             <property name="receives-default">True</property>
@@ -175,10 +145,10 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label7">
+          <object class="GtkLabel" id="label02">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="label" translatable="yes">introduce the data below</property>
+            <property name="label" translatable="yes">the data below</property>
           </object>
           <packing>
             <property name="left-attach">1</property>
@@ -186,7 +156,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry">
+          <object class="GtkEntry" id="entry6">
             <property name="visible">True</property>
             <property name="can-focus">True</property>
           </object>
@@ -196,7 +166,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkLabel" id="label8">
+          <object class="GtkLabel" id="label6">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="label" translatable="yes">Type(income/expense)</property>
@@ -207,23 +177,32 @@
           </packing>
         </child>
         <child>
-          <placeholder/>
+          <object class="GtkButton" id="submit_button">
+            <property name="label" translatable="yes">Submit</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+          </object>
+          <packing>
+            <property name="left-attach">0</property>
+            <property name="top-attach">7</property>
+          </packing>
         </child>
       </object>
     </child>
   </object>
-  <object class="GtkWindow" id="window">
+  <object class="GtkWindow" id="main_window">
     <property name="name">Transactions Application</property>
     <property name="can-focus">False</property>
     <property name="default-width">800</property>
     <property name="default-height">500</property>
     <child>
-      <object class="GtkBox" id="box">
+      <object class="GtkBox" id="box_main">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="orientation">vertical</property>
         <child>
-          <object class="GtkButton" id="Insert_button">
+          <object class="GtkButton" id="insert_button">
             <property name="label" translatable="yes">Insert a transaction into the account</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
@@ -238,7 +217,7 @@
           </packing>
         </child>
         <child>
-          <object class="GtkButton" id="Show_button">
+          <object class="GtkButton" id="show_button">
             <property name="label" translatable="yes">Show the transactions from this account</property>
             <property name="visible">True</property>
             <property name="can-focus">True</property>
@@ -278,6 +257,43 @@
             <property name="expand">False</property>
             <property name="fill">True</property>
             <property name="position">3</property>
+          </packing>
+        </child>
+      </object>
+    </child>
+  </object>
+  <object class="GtkWindow" id="show_popup">
+    <property name="can-focus">False</property>
+    <child>
+      <object class="GtkBox" id="box_show">
+        <property name="width-request">800</property>
+        <property name="height-request">400</property>
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="orientation">vertical</property>
+        <property name="baseline-position">top</property>
+        <child>
+          <object class="GtkTextView" id="textview">
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+          </object>
+          <packing>
+            <property name="expand">True</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkButton" id="show_exit_button">
+            <property name="label" translatable="yes">Exit</property>
+            <property name="visible">True</property>
+            <property name="can-focus">True</property>
+            <property name="receives-default">True</property>
+          </object>
+          <packing>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">1</property>
           </packing>
         </child>
       </object>
