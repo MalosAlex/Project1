@@ -32,7 +32,7 @@ void exit_button_show(GtkButton *button, gpointer user_data)
 void show_button_clicked(GtkButton *button, gpointer user_data)
 {
     gtk_widget_hide(GTK_WIDGET(main_window));
-    gtk_widget_hide(GTK_WIDGET(show_popup));
+    gtk_widget_show_all(GTK_WIDGET(show_popup));
     g_print("Show button clicked!");
 }
 void submit_button_clicked(GtkButton *button, gpointer user_data)
