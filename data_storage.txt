@@ -1,0 +1,2 @@
+2004 8 18 "Oare merge?" 420.42 income
+1963 12 23 "Hm?" 83.24 expense

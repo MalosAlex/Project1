@@ -14,7 +14,8 @@ int main(int argc, char *argv[])
 {
     //Initializing GTK
     gtk_init(&argc,&argv);
-    numTransactions = 0;
+    load_transaction("data_storage.txt");
+    g_print("numTransactions: %d\n", numTransactions);
     //Creating a GtkBuilder to load the Glade file in which the application was designed
     GtkBuilder *builder = gtk_builder_new();
     if (gtk_builder_add_from_file(builder,"project_gui.glade", NULL) == 0)
@@ -22,13 +23,6 @@ int main(int argc, char *argv[])
         g_error("Failed to load Glade file");
         return 1;
     }
-    transactions[0].year = 2004;
-    transactions[0].month = 8;
-    transactions[0].day = 18;
-    strcpy(transactions[0].description,"test");
-    transactions[0].amount = 320.45;
-    strcpy(transactions[0].type,"income");
-    numTransactions = 1;
     //Retrieving widgets
     //Retrieving the windows
     main_window = GTK_WINDOW(gtk_builder_get_object(builder,"main_window"));

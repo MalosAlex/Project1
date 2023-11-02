@@ -20,13 +20,14 @@ void load_transaction(const char* filename)
     FILE* file = fopen(filename, "r"); //read
     if(file)
     {
-        numTransactions = 0;
-        while(numTransactions < 1001 && fscanf(file, "%d %d %d %s %f %7s\n", &transactions[numTransactions].year, &transactions[numTransactions].month,
+        while(numTransactions < 1001 && fscanf(file, "%d %d %d %256[^:0-9] %f %7s\n", &transactions[numTransactions].year, &transactions[numTransactions].month,
                 &transactions[numTransactions].day, transactions[numTransactions].description, &transactions[numTransactions].amount,
                 transactions[numTransactions].type) == 6) //checks if it reads a value for every variable
-            numTransactions++;
+            numTransactions = numTransactions + 1;
         fclose(file);
     }
+    else
+        g_print("Failed to open the file :/");
 }
 //The functions for the buttons
 void insert_button_clicked(GtkButton *button, gpointer user_data)
