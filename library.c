@@ -34,6 +34,7 @@ void save_transaction(const char* filename, struct Transaction transaction)
     {
         fprintf(file, "%d %d %d %s %f %s\n", transaction.year, transaction.month, transaction.day, transaction.description, transaction.amount, transaction.type);
     }
+    transactions[numTransactions] = transaction;
     numTransactions++;
     fclose(file);
 }
@@ -114,6 +115,8 @@ void show_button_clicked(GtkButton *button, gpointer user_data)
 }
 void submit_button_clicked(GtkButton *button, gpointer user_data)
 {
+    //We save the transaction
+    save_transaction("data_storage.txt", aux);
     g_print("Submit button clicked!");
 }
 gboolean check_e1(GtkEntry *entry)
@@ -125,7 +128,7 @@ gboolean check_e1(GtkEntry *entry)
         gtk_label_set_text(error1, "Please enter a valid year, between 1960 and the current one");
         return FALSE;
     }
-    gtk_label_set_markup(GTK_LABEL(error1), "<span font_desc='30'><b>✔</b> Checkmark</span>");
+    gtk_label_set_markup(GTK_LABEL(error1), "<span font_desc='30'><b>✔</b></span>");
     aux.year = number;
     return TRUE;
 
@@ -139,7 +142,7 @@ gboolean check_e2(GtkEntry *entry)
         gtk_label_set_text(error2, "Please enter a valid month, in a numerical value");
         return FALSE;
     }
-    gtk_label_set_markup(GTK_LABEL(error2), "<span font_desc='30'><b>✔</b> Checkmark</span>");
+    gtk_label_set_markup(GTK_LABEL(error2), "<span font_desc='30'><b>✔</b></span>");
     aux.month = number;
     return TRUE;
 
@@ -179,7 +182,7 @@ gboolean check_e3(GtkEntry *entry)
             }
         }
     }
-    gtk_label_set_markup(GTK_LABEL(error3), "<span font_desc='30'><b>✔</b> Checkmark</span>");
+    gtk_label_set_markup(GTK_LABEL(error3), "<span font_desc='30'><b>✔</b></span>");
     aux.day = number;
     return TRUE;
 }
@@ -192,7 +195,7 @@ gboolean check_e4(GtkEntry *entry)
         gtk_label_set_text(error4, "Please enter a shorter description");
         return FALSE;
     }
-    gtk_label_set_markup(GTK_LABEL(error4), "<span font_desc='30'><b>✔</b> Checkmark</span>");
+    gtk_label_set_markup(GTK_LABEL(error4), "<span font_desc='30'><b>✔</b></span>");
     strcpy(aux.description, text);
     return TRUE;
 }
@@ -205,7 +208,7 @@ gboolean check_e5(GtkEntry *entry)
         gtk_label_set_text(error5, "Please enter a positive value");
         return FALSE;
     }
-    gtk_label_set_markup(GTK_LABEL(error5), "<span font_desc='30'><b>✔</b> Checkmark</span>");
+    gtk_label_set_markup(GTK_LABEL(error5), "<span font_desc='30'><b>✔</b></span>");
     aux.amount = number;
     return TRUE;
 }
@@ -214,7 +217,7 @@ gboolean check_e6(GtkEntry *entry)
     const gchar *text = gtk_entry_get_text(entry); //gtk_entry_get_text returns a pointer to a string
     if(strcmp(text,"income") == 0 || strcmp(text,"expense") == 0)
     {
-        gtk_label_set_markup(GTK_LABEL(error6), "<span font_desc='30'><b>✔</b> Checkmark</span>");
+        gtk_label_set_markup(GTK_LABEL(error6), "<span font_desc='30'><b>✔</b></span>");
         strcpy(aux.type,text);
         return TRUE;
     }

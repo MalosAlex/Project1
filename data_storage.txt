@@ -1,2 +1,5 @@
 2004 8 18 "Oare merge?" 420.42 income
 1963 12 23 "Hm?" 83.24 expense
+2001 3 18 first 420.119995 income
+2001 12 12 This should work now 21.320000 expense
+1999 11 23 Bang 22.010000 income
