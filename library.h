@@ -36,6 +36,7 @@ struct Transaction {
 extern struct Transaction transactions[1001];
 extern struct Transaction aux;
 extern int numTransactions;
+extern float currentAmount;
 
 // Function prototypes
 void save_transaction(const char* filename, struct Transaction transaction);

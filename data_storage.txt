@@ -3,3 +3,4 @@
 2001 3 18 first 420.119995 income
 2001 12 12 This should work now 21.320000 expense
 1999 11 23 Bang 22.010000 income
+2004 11 9 Brug :3 123.000000 expense

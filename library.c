@@ -23,6 +23,7 @@ GtkTextView *textview;
 GtkTextBuffer *text_buffer;
 struct Transaction transactions[1001];
 int numTransactions = 0;
+float currentAmount = 0;
 
 struct Transaction aux;
 void save_transaction(const char* filename, struct Transaction transaction)
@@ -36,6 +37,7 @@ void save_transaction(const char* filename, struct Transaction transaction)
     }
     transactions[numTransactions] = transaction;
     numTransactions++;
+    currentAmount = currentAmount + transaction.amount;
     fclose(file);
 }
 void load_transaction(const char* filename)
@@ -46,7 +48,13 @@ void load_transaction(const char* filename)
         while(numTransactions < 1001 && fscanf(file, "%d %d %d %256[^:0-9] %f %7s\n", &transactions[numTransactions].year, &transactions[numTransactions].month,
                 &transactions[numTransactions].day, transactions[numTransactions].description, &transactions[numTransactions].amount,
                 transactions[numTransactions].type) == 6) //checks if it reads a value for every variable
-            numTransactions = numTransactions + 1;
+            {
+                if(transactions[numTransactions].type[0] == 'e')
+                    currentAmount = currentAmount - transactions[numTransactions].amount;
+                else
+                    currentAmount = currentAmount + transactions[numTransactions].amount;
+                numTransactions = numTransactions + 1;
+            }
         fclose(file);
     }
     else
@@ -111,7 +119,15 @@ void show_button_clicked(GtkButton *button, gpointer user_data)
 
         //Append the transaction data to the text buffer
         gtk_text_buffer_insert_at_cursor(local_text_buffer, TransactionData, -1);
+
     }
+    char TransactionData[512];
+    sprintf(TransactionData, "Current amount: %f", currentAmount);
+    //We get the text buffer
+    GtkTextBuffer *local_text_buffer = gtk_text_view_get_buffer(textview);
+
+    //Append the transaction data to the text buffer
+    gtk_text_buffer_insert_at_cursor(local_text_buffer, TransactionData, -1);
 }
 void submit_button_clicked(GtkButton *button, gpointer user_data)
 {
@@ -217,6 +233,18 @@ gboolean check_e6(GtkEntry *entry)
     const gchar *text = gtk_entry_get_text(entry); //gtk_entry_get_text returns a pointer to a string
     if(strcmp(text,"income") == 0 || strcmp(text,"expense") == 0)
     {
+        if(strcmp(text,"expense") == 0)
+            if(currentAmount - aux.amount <= 0)
+            {
+                gtk_label_set_text(error6, "You don't have enough money for this expense");
+                return FALSE;
+            }
+            else
+                {
+                    gtk_label_set_markup(GTK_LABEL(error6), "<span font_desc='30'><b>✔</b></span>");
+                    strcpy(aux.type,text);
+                    return TRUE;
+                }
         gtk_label_set_markup(GTK_LABEL(error6), "<span font_desc='30'><b>✔</b></span>");
         strcpy(aux.type,text);
         return TRUE;

@@ -7,7 +7,6 @@ int main(int argc, char *argv[])
     //Initializing GTK
     gtk_init(&argc,&argv);
     load_transaction("data_storage.txt");
-    g_print("numTransactions: %d\n", numTransactions);
     //Creating a GtkBuilder to load the Glade file in which the application was designed
     GtkBuilder *builder = gtk_builder_new();
     if (gtk_builder_add_from_file(builder,"project_gui.glade", NULL) == 0)
@@ -78,7 +77,7 @@ int main(int argc, char *argv[])
 
 
     //Setting the texts for the labels
-    gtk_label_set_text(contact,"Program made xxxxx");
+    gtk_label_set_text(contact,"Program made by Malos Alexandru-Razvan. Contact: malosalexandru2004@gmail.com");
     gtk_label_set_text(label1,"Year of transaction:");
     gtk_label_set_text(label2,"Month of transaction:");
     gtk_label_set_text(label3,"Day of transaction:");
