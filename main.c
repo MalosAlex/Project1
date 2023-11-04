@@ -2,14 +2,6 @@
 #include <stdio.h>
 #include "library.h"
 
-GtkWindow *main_window;
-GtkWindow *show_popup;
-GtkWindow *insert_popup;
-GtkTextView *textview;
-GtkTextBuffer *text_buffer;
-struct Transaction transactions[1001];
-int numTransactions = 0;
-
 int main(int argc, char *argv[])
 {
     //Initializing GTK
@@ -44,14 +36,22 @@ int main(int argc, char *argv[])
     GtkLabel *label6 = GTK_LABEL(gtk_builder_get_object(builder, "label6"));
     GtkLabel *label01 = GTK_LABEL(gtk_builder_get_object(builder, "label01"));
     GtkLabel *label02 = GTK_LABEL(gtk_builder_get_object(builder, "label02"));
-    GtkEntry *entry1 = GTK_ENTRY(gtk_builder_get_object(builder, "entry1"));
-    GtkEntry *entry2 = GTK_ENTRY(gtk_builder_get_object(builder, "entry2"));
-    GtkEntry *entry3 = GTK_ENTRY(gtk_builder_get_object(builder, "entry3"));
-    GtkEntry *entry4 = GTK_ENTRY(gtk_builder_get_object(builder, "entry4"));
-    GtkEntry *entry5 = GTK_ENTRY(gtk_builder_get_object(builder, "entry5"));
-    GtkEntry *entry6 = GTK_ENTRY(gtk_builder_get_object(builder, "entry6"));
+    entry1 = GTK_ENTRY(gtk_builder_get_object(builder, "entry1"));
+    entry2 = GTK_ENTRY(gtk_builder_get_object(builder, "entry2"));
+    entry3 = GTK_ENTRY(gtk_builder_get_object(builder, "entry3"));
+    entry4 = GTK_ENTRY(gtk_builder_get_object(builder, "entry4"));
+    entry5 = GTK_ENTRY(gtk_builder_get_object(builder, "entry5"));
+    entry6 = GTK_ENTRY(gtk_builder_get_object(builder, "entry6"));
     GtkButton *insert_exit_button = GTK_BUTTON(gtk_builder_get_object(builder, "insert_exit_button"));
     GtkButton *submit_button = GTK_BUTTON(gtk_builder_get_object(builder, "submit_button"));
+    error1 = GTK_LABEL(gtk_builder_get_object(builder, "error1"));
+    error2 = GTK_LABEL(gtk_builder_get_object(builder, "error2"));
+    error3 = GTK_LABEL(gtk_builder_get_object(builder, "error3"));
+    error4 = GTK_LABEL(gtk_builder_get_object(builder, "error4"));
+    error5 = GTK_LABEL(gtk_builder_get_object(builder, "error5"));
+    error6 = GTK_LABEL(gtk_builder_get_object(builder, "error6"));
+    feedback = GTK_LABEL(gtk_builder_get_object(builder, "feedback"));
+
     //show window
     GtkBox *box_show = GTK_BOX(gtk_builder_get_object(builder, "box_show"));
     textview = GTK_TEXT_VIEW(gtk_builder_get_object(builder, "textview"));
@@ -67,8 +67,18 @@ int main(int argc, char *argv[])
     g_signal_connect(G_OBJECT(insert_exit_button), "clicked", G_CALLBACK(exit_button_insert), NULL);
     g_signal_connect(G_OBJECT(submit_button), "clicked", G_CALLBACK(submit_button_clicked), NULL);
 
+    //setting up the text entries
+    //If any text is changed I go into the function entry_changed to check if all entries are good
+    g_signal_connect(G_OBJECT(entry1), "changed", G_CALLBACK(entry_changed),submit_button);
+    g_signal_connect(G_OBJECT(entry2), "changed", G_CALLBACK(entry_changed),submit_button);
+    g_signal_connect(G_OBJECT(entry3), "changed", G_CALLBACK(entry_changed),submit_button);
+    g_signal_connect(G_OBJECT(entry4), "changed", G_CALLBACK(entry_changed),submit_button);
+    g_signal_connect(G_OBJECT(entry5), "changed", G_CALLBACK(entry_changed),submit_button);
+    g_signal_connect(G_OBJECT(entry6), "changed", G_CALLBACK(entry_changed),submit_button);
+
+
     //Setting the texts for the labels
-    gtk_label_set_text(contact,"Program made by Malos Alexandru. Contact: malosalexandru@gmail.com");
+    gtk_label_set_text(contact,"Program made xxxxx");
     gtk_label_set_text(label1,"Year of transaction:");
     gtk_label_set_text(label2,"Month of transaction:");
     gtk_label_set_text(label3,"Day of transaction:");
@@ -77,7 +87,13 @@ int main(int argc, char *argv[])
     gtk_label_set_text(label6,"Type(income/expense)");
     gtk_label_set_text(label01,"Please introduce");
     gtk_label_set_text(label02,"the data below");
-
+    gtk_label_set_text(error1, "");
+    gtk_label_set_text(error2, "");
+    gtk_label_set_text(error3, "");
+    gtk_label_set_text(error4, "");
+    gtk_label_set_text(error5, "");
+    gtk_label_set_text(error6, "");
+    gtk_label_set_text(feedback, "Feedback on input");
     //Shwoing the main window
     gtk_widget_show_all(GTK_WIDGET(main_window));
 
