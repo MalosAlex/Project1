@@ -1,6 +1,7 @@
-2004 8 18 "Oare merge?" 420.42 income
-1963 12 23 "Hm?" 83.24 expense
-2001 3 18 first 420.119995 income
-2001 12 12 This should work now 21.320000 expense
-1999 11 23 Bang 22.010000 income
-2004 11 9 Brug :3 123.000000 expense
+2004 8 18 First recorded transaction 420.42 income
+1963 12 23 Shopping 83.24 expense
+2001 3 18 Salary 1013.20 income
+2001 12 12 Fixed car 21.320000 expense
+1999 11 23 Got money back from company for car 22.010000 income
+2004 11 9 Went to a restaurant 123.000000 expense
+2000 11 1 Received gift from family 50.00 income
