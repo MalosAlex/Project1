@@ -6,3 +6,4 @@
 2004 11 9 Went to a restaurant 123.000000 expense
 2000 11 1 Received gift from family 50.00 income
 2020 8 14 Incasare salar 3800.000000 income
+2000 12 2 Won prize 250.000000 income

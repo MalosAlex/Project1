@@ -339,6 +339,11 @@ gboolean check_e3(GtkEntry *entry)
 {
     const gchar *text = gtk_entry_get_text(entry); //gtk_entry_get_text returns a pointer to a string
     int number = atoi(text); //converts to int
+    if (number == 0)
+    {
+        gtk_label_set_text(error3, "Please enter a valid day");
+        return FALSE;
+    }
     if(aux.year % 4 == 0 && aux.month == 2)
         if(number < 1 || number > 29)
         {
@@ -391,6 +396,11 @@ gboolean check_e5(GtkEntry *entry)
 {
     const gchar *text = gtk_entry_get_text(entry); //gtk_entry_get_text returns a pointer to a string
     float number = atof(text); //converts to float
+    if (number == 0)
+    {
+        gtk_label_set_text(error5, "Please enter a valid amount");
+        return FALSE;
+    }
     if(number < 0)
     {
         gtk_label_set_text(error5, "Please enter a positive value");
@@ -454,6 +464,11 @@ gboolean check_pe3(GtkEntry *entry, GtkLabel *perror3)
 {
     const gchar *text = gtk_entry_get_text(entry); //gtk_entry_get_text returns a pointer to a string
     int number = atoi(text); //converts to int
+    if (number == 0)
+    {
+        gtk_label_set_text(perror3, "Please enter a valid day");
+        return FALSE;
+    }
     if(aux.year % 4 == 0 && aux.month == 2)
         if(number < 1 || number > 29)
         {
