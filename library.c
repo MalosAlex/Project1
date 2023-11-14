@@ -100,17 +100,23 @@ gboolean validate_all_entries_period()
     gboolean e6 = check_pe3(pentry6, perror6);
     if (e1 == FALSE || e2 == FALSE || e3 == FALSE || e4 == FALSE || e5 == FALSE || e6 == FALSE)
         return FALSE; 
-    if (pentry1 > pentry4)
+    int p1 = atoi(gtk_entry_get_text(pentry1));
+    int p2 = atoi(gtk_entry_get_text(pentry2));
+    int p3 = atoi(gtk_entry_get_text(pentry3));
+    int p4 = atoi(gtk_entry_get_text(pentry4));
+    int p5 = atoi(gtk_entry_get_text(pentry5));
+    int p6 = atoi(gtk_entry_get_text(pentry6));
+    if (p1 > p4)
         {
             gtk_label_set_text(perror1, "The start of the period must be before the end of the period");
             return FALSE;
         }
-    if (pentry1 == pentry4 && pentry2 > pentry5)
+    if (p1 == p4 && p2 > p5)
         {
             gtk_label_set_text(perror2, "The start of the period must be before the end of the period");
             return FALSE;
         }
-    if (pentry1 == pentry4 && pentry2 == pentry5 && pentry3 > pentry6)
+    if (p1 == p4 && p2 == p5 && p3 > p6)
         {
             gtk_label_set_text(perror3, "The start of the period must be before the end of the period");
             return FALSE;
@@ -149,7 +155,6 @@ void insert_button_clicked(GtkButton *button, gpointer user_data)
     gtk_widget_hide(GTK_WIDGET(main_window));
     gtk_widget_show_all(GTK_WIDGET(insert_popup));
 
-    g_print("Insert button clicked!");
 }
 void exit_button_clicked(GtkButton *button, gpointer user_data)
 {
@@ -219,7 +224,6 @@ void period_button_clicked(GtkButton *button, gpointer user_data)
 {
     gtk_widget_hide(GTK_WIDGET(main_window));
     gtk_widget_show_all(GTK_WIDGET(period_popup));
-    g_print("Period button clicked!");
 }
 void period_submit_button_clicked(GtkButton *button, gpointer user_data)
 {
@@ -302,12 +306,11 @@ void balance_button_clicked(GtkButton *button, gpointer user_data)
     gtk_dialog_run(balance_dialog);
     
     gtk_widget_hide(GTK_WIDGET(balance_dialog));
-    g_print("Balance button clicked!");
-
 
 }
 //The functions for the entries
 gboolean check_e1(GtkEntry *entry)
+
 {
     const gchar *text = gtk_entry_get_text(entry); //gtk_entry_get_text returns a pointer to a string
     int number = atoi(text); //converts to int
@@ -322,6 +325,7 @@ gboolean check_e1(GtkEntry *entry)
 
 }
 gboolean check_e2(GtkEntry *entry)
+
 {
     const gchar *text = gtk_entry_get_text(entry); //gtk_entry_get_text returns a pointer to a string
     int number = atoi(text); //converts to int
