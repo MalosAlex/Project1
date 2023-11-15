@@ -43,3 +43,5 @@ so 6 in total as well) with pretty similar functions for checking for errors, bu
 	For showing the account balance, I keep a curAmount at all times that keeps track of the account balance, and when the 4th button is pressed, a dialog is opened which shows the balance
 
 All the functions are declared in library.h, along with the buttons and labels and the functions are constructed in library.c, later to be called in main.c when pressing a button or making a change in text entry
+
+All the widgets used in this program are: buttons, labels, text_entries, text_views while as a storage of widgets I used boxes, grids and for the popups I used windows or dialogs
