@@ -1,4 +1,4 @@
-C Project
+C Project by Malos Alexandru-Razvan Informatica engleza
 
 		The project opens with a menu consisting of 4 options: Insert, Show all transactions, Show transactions in a time period, Show the account balance
 	The whole GUI was made using the gtk library and the Glade application. For help I used the official gtk website documentation:
