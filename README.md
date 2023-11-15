@@ -45,3 +45,9 @@ so 6 in total as well) with pretty similar functions for checking for errors, bu
 All the functions are declared in library.h, along with the buttons and labels and the functions are constructed in library.c, later to be called in main.c when pressing a button or making a change in text entry
 
 All the widgets used in this program are: buttons, labels, text_entries, text_views while as a storage of widgets I used boxes, grids and for the popups I used windows or dialogs
+
+TODO:
+-make the ammount be stored in float of only 2 zecimals
+-try and put some colors in the program
+-if able to put colors, should write the errors with red and checkmark with green
+-optional: sort the transactions before showing (harder for period, so maybe just sort them when I load them and then insert at given space)
