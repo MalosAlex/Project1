@@ -1,13 +1,13 @@
 C Project by Malos Alexandru-Razvan Informatica engleza
 
-		The project opens with a menu consisting of 4 options: Insert, Show all transactions, Show transactions in a time period, Show the account balance
-	The whole GUI was made using the gtk library and the Glade application. For help I used the official gtk website documentation:
-												https://docs.gtk.org/gtk3/
-	and multiple tutorials on youtube and standalone sites for making a first GUI, which I then used as a refference for this project
+The project opens with a menu consisting of 4 options: Insert, Show all transactions, Show transactions in a time period, Show the account balance
+The whole GUI was made using the gtk library and the Glade application. For help I used the official gtk website documentation:
+				https://docs.gtk.org/gtk3/
+and multiple tutorials on youtube and standalone sites for making a first GUI, which I then used as a refference for this project
 
 1. Inserting data:
 
-		For inserting the data I use a popup called insert_popup, that appears when I press the first button, which has 6 labels and textentries and 6 other labels for errors
+	For inserting the data I use a popup called insert_popup, that appears when I press the first button, which has 6 labels and textentries and 6 other labels for errors
 	While at the bottom there is a locked submit button and an exit button.
 		For storing data, I used a file "data_storage.txt" in which I stored data in the form:
 	year month day details ammount type
@@ -24,25 +24,22 @@ Loading the data:
 		When the program starts, the data from the file is read adn stored in the array, and while it's stored, we also calculate the current ammount, so we know it at all times
 
 Error checking:
-
-		By far the most complex part of the insert and the whole code, are the functions that check that the data is correctly imputed.
-	For every data I had to check that: it's the correct type, it's within a certain bound(year between 1960 and 2024, month between 1 and 12, day between 1 and 28,29,30,31, depending on
-	the month and year) and that it also made sense (if the type is expense but the ammount is bigger than the current ammount, the user can't submit the data)
-		The most unique part of my code is how I handled the errors. Instead of letting the user press submit and crashing the program or the insert_popup, I lock the submit button, making it
-	available only when all 6 datas are correct. If a data is not correct, I show next to it feedback on what's wrong with the data inserted and if it's correct I show a checkmark.
-	The data is checked at every input(digit, letter) thus making it very efficient and user friendly
+	By far the most complex part of the insert and the whole code, are the functions that check that the data is correctly imputed.
+For every data I had to check that: it's the correct type, it's within a certain bound(year between 1960 and 2024, month between 1 and 12, day between 1 and 28,29,30,31, depending on
+the month and year) and that it also made sense (if the type is expense but the ammount is bigger than the current ammount, the user can't submit the data)
+	The most unique part of my code is how I handled the errors. Instead of letting the user press submit and crashing the program or the insert_popup, I lock the submit button, making it
+available only when all 6 datas are correct. If a data is not correct, I show next to it feedback on what's wrong with the data inserted and if it's correct I show a checkmark.
+The data is checked at every input(digit, letter) thus making it very efficient and user friendly
 
 2. Showing all transactions:
-
-		For showing the data I use a popup called show_popup which is just a text_view with an exit button at the bottom. It shows the data in the order it was inputed, without sorting it since
-	it was not asked and it seems more beneficial to the user to show it in this order. (Note: after a certain time the user will most likely enter only current transactions, since entering old ones won't make that much sense)
+	For showing the data I use a popup called show_popup which is just a text_view with an exit button at the bottom. It shows the data in the order it was inputed, without sorting it since
+it was not asked and it seems more beneficial to the user to show it in this order. (Note: after a certain time the user will most likely enter only current transactions, since entering old ones won't make that much sense)
 
 3. Show transactions in a time period:
-
-		For showing the transactions in a certain time period, I first show the user an period_popup that's very similar to the insert_popup, but this time has 2 dates to input(day month year
-	so 6 in total as well) with pretty similar functions for checking for errors, but this time I also check that the first date is smaller than the second one. After the data is correctly inputed and the show button appears, the show_popup opens again and shows the transactions for that time
+	For showing the transactions in a certain time period, I first show the user an period_popup that's very similar to the insert_popup, but this time has 2 dates to input(day month year
+so 6 in total as well) with pretty similar functions for checking for errors, but this time I also check that the first date is smaller than the second one. After the data is correctly inputed and the show button appears, the show_popup opens again and shows the transactions for that time
 
 4. Show the account balance:
+	For showing the account balance, I keep a curAmount at all times that keeps track of the account balance, and when the 4th button is pressed, a dialog is opened which shows the balance
 
-		For showing the account balance, I keep a curAmount at all times that keeps track of the account balance, and when the 4th button is pressed, a dialog is opened which shows the balance
-
+All the functions are declared in library.h, along with the buttons and labels and the functions are constructed in library.c, later to be called in main.c when pressing a button or making a change in text entry
